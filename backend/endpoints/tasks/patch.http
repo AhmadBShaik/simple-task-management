@@ -1,0 +1,6 @@
+PATCH  http://localhost:3001/api/tasks/66c099c8b24f280b841e6504
+Content-Type: application/json
+
+{
+  "priority":"high"
+}
