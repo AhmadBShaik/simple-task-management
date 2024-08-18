@@ -1,0 +1,41 @@
+services:
+  frontend:
+    container_name: simple-task-management-frontend
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+    networks:
+      - simple-task-management-network
+
+  backend:
+    container_name: simple-task-management-backend
+    build: ./backend
+    ports:
+      - "5000:5000"
+    restart: always
+    depends_on:
+      - database
+    networks:
+      - simple-task-management-network
+
+  database:
+    container_name: mongo-db
+    image: mongo:7.0
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+
+    ports:
+      - "27017:27017"
+    volumes:
+      - /home/ahmad/simple-task-management-db-backup:/data/db
+    networks:
+      - simple-task-management-network
+
+networks:
+  simple-task-management-network:
+    driver: bridge
