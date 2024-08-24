@@ -1,4 +1,4 @@
-
+export const revalidate = 0
 const getAllTasks = async () => {
   const tasks = await fetch('http://backend:5000/api/tasks')
   return tasks.json()

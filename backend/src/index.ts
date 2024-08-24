@@ -2,7 +2,12 @@ import dotenv from 'dotenv';
 import express, { Express } from 'express';
 import mongoose from 'mongoose';
 import { taskRoute } from './routes/task.route';
-dotenv.config();
+import path from 'path';
+const envFile = process.env.NODE_ENV === 'production' ? '.env.prod' : '.env.dev';
+dotenv.config({
+  path: path.resolve(__dirname,
+    '..', envFile)
+});
 
 const app: Express = express();
 const PORT = process.env.PORT;
@@ -19,5 +24,7 @@ mongoose.connect(`mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PA
 })
 
 app.listen(PORT, () => {
-  console.log(`[server]: Server is running at http://localhost:${PORT}`);
+  console.log(`[${process.env.NODE_ENV}-server]: Server is running at http://localhost:${PORT}`);
+  console.log(`mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_DB_NAME}:27017/`)
+  console.log(JSON.stringify(process.env))
 });

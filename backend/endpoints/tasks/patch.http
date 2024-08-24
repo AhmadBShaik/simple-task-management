@@ -1,6 +1,7 @@
-PATCH  http://localhost:5000/api/tasks/66c1bec8103c497d3cd6eec6
+PATCH  http://localhost:5000/api/tasks/66c9b1f49cf275179b7a3e4e
 Content-Type: application/json
 
 {
-  "priority":"medium"
+  "title":"task 5",
+  "priority":"low"
 }

@@ -41,7 +41,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - /home/ahmad/simple-task-management-db-backup:/data/db
+      - ./backend/simple-task-management-db-backup:/data/db
     networks:
       - simple-task-management-network
 

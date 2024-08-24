@@ -5,6 +5,7 @@ WORKDIR /app
 
 RUN corepack enable
 COPY package.json pnpm-lock.yaml ./
+COPY .env.dev ./
 RUN pnpm install
 
 COPY . .
