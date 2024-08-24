@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import express, { Express } from 'express';
-import mongoose, { ConnectOptions } from 'mongoose';
+import mongoose from 'mongoose';
 import { taskRoute } from './routes/task.route';
 dotenv.config();
 
@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use("/api/tasks", taskRoute)
 
-mongoose.connect("mongodb://root:password@mongo-db:27017/").then(() => {
+mongoose.connect(`mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_DB_NAME}:27017/`).then(() => {
   console.log("database connection successful!")
 }).catch((error) => {
   console.log(`database connection failed!, Error:${error}`)

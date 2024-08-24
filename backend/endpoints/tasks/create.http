@@ -3,5 +3,5 @@ Content-Type: application/json
 
 {
   "title":"Task 1",
-  "priority":"high"
+  "priority":"lowest"
 }
